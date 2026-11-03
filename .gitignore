@@ -1,0 +1,39 @@
+# ==============================================================================
+# Neovim Local States & Runtime Caches
+# ==============================================================================
+# Exclude local state files, undo histories, and swap files
+.netrwhist
+*.swp
+*.swo
+.DS_Store
+
+# ==============================================================================
+# Package Managers & Plugin Installations
+# ==============================================================================
+# Exclude downloaded plugin source code (managed by your pack manager dynamically)
+/.deps/
+/pack/
+/site/
+
+# Exclude lazy.nvim local cache / state directories if applicable
+/lazy/
+/lazy-lock.json.bak
+
+# ==============================================================================
+# LSP, Copilot, & Tooling Artifacts
+# ==============================================================================
+# Exclude dynamic logs generated during runtime
+*.log
+
+# Exclude local language server workspace caches
+/.ltex/
+/.nvim/
+.luarc.json
+
+# ==============================================================================
+# Custom / Local Configurations
+# ==============================================================================
+# Allows you to have a secret or machine-specific config file that won't go to GitHub
+init-local.lua
+local.lua
+
