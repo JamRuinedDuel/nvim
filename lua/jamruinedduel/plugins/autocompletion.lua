@@ -11,10 +11,9 @@ vim.opt.autocomplete = false
 local cmp = require("blink.cmp")
 
 cmp.build():pwait()
-
 cmp.setup({
   enabled = function()
-    return vim.bo.filetype ~= "minifiles"
+    return not vim.tbl_contains({ "minifiles", "help" }, vim.bo.filetype)
   end,
   keymap = {
     preset = "default",
@@ -60,14 +59,7 @@ cmp.setup({
     },
   },
   sources = {
-    default = {
-      "lsp",
-      "path",
-      "snippets",
-      "buffer",
-      "cmdline",
-      "omni",
-    },
+    default = { "lsp", "path", "snippets", "buffer", "cmdline", "omni" },
   },
   fuzzy = {
     implementation = "prefer_rust_with_warning",

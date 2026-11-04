@@ -1,3 +1,7 @@
+if vim.loader then
+  vim.loader.enable()
+end
+
 require("jamruinedduel.types")
 require("jamruinedduel.options")
 require("jamruinedduel.plugins")

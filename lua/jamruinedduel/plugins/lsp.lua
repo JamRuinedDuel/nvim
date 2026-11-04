@@ -66,13 +66,16 @@ vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*",
   callback = function()
-    vim.lsp.buf.format({
-      async = false,
-    })
+    if vim.b.formatting then
+      return
+    end
+    vim.b.formatting = true
+    vim.lsp.buf.format({ async = false })
+    vim.b.formatting = false
   end,
 })
 
-km.register("lspconfig", function()
+km.register("lsp", function()
   vim.keymap.set("n", "<leader>lo", vim.cmd.Mason, {
     desc = "Open Mason",
   })

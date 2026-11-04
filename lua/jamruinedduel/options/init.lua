@@ -12,7 +12,7 @@ opt.smartindent = true
 opt.backspace = "indent,eol,start"
 opt.list = false
 opt.listchars = { space = "·" }
-opt.wrap = true
+opt.wrap = false
 opt.linebreak = false
 
 opt.ignorecase = true
@@ -26,6 +26,7 @@ opt.signcolumn = "yes:1"
 opt.colorcolumn = ""
 opt.laststatus = 3
 opt.showmode = false
+opt.conceallevel = 1
 
 opt.clipboard:append("unnamedplus")
 
@@ -35,6 +36,7 @@ opt.equalalways = true
 opt.scrolloff = 5
 opt.sidescrolloff = 10
 
-vim.o.winborder = "single"
+opt.winborder = "single"
+opt.guicursor = "a:block-blinkwait500-blinkoff400-blinkon250,i:ver50-blinkwait500-blinkoff400-blinkon250"
 
 opt.undofile = true

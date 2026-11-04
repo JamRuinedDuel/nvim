@@ -1,2 +1,2 @@
-require("JamRuinedDuel.types.ColorPalette")
-require("JamRuinedDuel.types.LualineTheme")
+require("jamruinedduel.types.ColorPalette")
+require("jamruinedduel.types.LualineTheme")
