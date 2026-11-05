@@ -1,5 +1,5 @@
 local pack = require("jamruinedduel.utils.pack")
-local km = require("jamruinedduel.keymaps.registry")
+local km = require("jamruinedduel.utils.keymap")
 
 vim.api.nvim_create_autocmd("PackChanged", {
   group = vim.api.nvim_create_augroup("VimPackHooks", { clear = true }),
@@ -7,19 +7,27 @@ vim.api.nvim_create_autocmd("PackChanged", {
     if ev.data.spec.name ~= "telescope-fzf-native.nvim" then
       return
     end
-    if ev.data.kind ~= "install" and ev.data.kind ~= "update" then
+
+    if not vim.tbl_contains({ "install", "update" }, ev.data.kind) then
       return
     end
 
-    vim.notify("Compiling telescope-fzf-native...", vim.log.levels.INFO)
+    vim.notify("Compiling...", vim.log.levels.INFO, {
+      title = "telescope-fzf-native",
+    })
+
     vim.system({ "make" }, { cwd = ev.data.path }, function(obj)
       if obj.code == 0 then
         vim.schedule(function()
-          vim.notify("telescope-fzf-native compiled successfully!", vim.log.levels.INFO)
+          vim.notify("Compiled successfully!", vim.log.levels.INFO, {
+            title = "telescope-fzf-native",
+          })
         end)
       else
         vim.schedule(function()
-          vim.notify("Failed to compile telescope-fzf-native:\n" .. obj.stderr, vim.log.levels.ERROR)
+          vim.notify("Compile failed!\n" .. obj.stderr, vim.log.levels.ERROR, {
+            title = "telescope-fzf-native",
+          })
         end)
       end
     end)
@@ -105,31 +113,13 @@ local open_git_commits_picker = function()
 end
 
 km.register("telescope", function()
-  vim.keymap.set("n", "<leader><leader>g", open_git_commits_picker, {
-    desc = "Open Git history",
-  })
-  vim.keymap.set("n", "<leader><leader>f", open_file_picker, {
-    desc = "Open file picker",
-  })
-  vim.keymap.set("n", "<leader><leader>s", open_grep_live_picker, {
-    desc = "Open grep live picker",
-  })
-  vim.keymap.set("n", "<leader><leader>b", open_buffer_picker, {
-    desc = "Open buffer picker",
-  })
-  vim.keymap.set("n", "<leader><leader>h", open_help_picker, {
-    desc = "Open help picker",
-  })
-  vim.keymap.set("n", "<leader><leader>d", open_diagnostics_picker, {
-    desc = "Open diagnostics picker",
-  })
-  vim.keymap.set("n", "<leader><leader>c", open_colorschemes_picker, {
-    desc = "Open colorschemes picker",
-  })
-  vim.keymap.set("n", "<leader><leader>m", open_manpages_picker, {
-    desc = "Open manpages picker",
-  })
-  vim.keymap.set("n", "<leader><leader>q", open_quickfix_picker, {
-    desc = "Open quick fix picker",
-  })
+  vim.keymap.set("n", "<leader><leader>g", open_git_commits_picker, { desc = "Open Git history" })
+  vim.keymap.set("n", "<leader><leader>f", open_file_picker, { desc = "Open file picker" })
+  vim.keymap.set("n", "<leader><leader>s", open_grep_live_picker, { desc = "Open grep live picker" })
+  vim.keymap.set("n", "<leader><leader>b", open_buffer_picker, { desc = "Open buffer picker" })
+  vim.keymap.set("n", "<leader><leader>h", open_help_picker, { desc = "Open help picker" })
+  vim.keymap.set("n", "<leader><leader>d", open_diagnostics_picker, { desc = "Open diagnostics picker" })
+  vim.keymap.set("n", "<leader><leader>c", open_colorschemes_picker, { desc = "Open colorschemes picker" })
+  vim.keymap.set("n", "<leader><leader>m", open_manpages_picker, { desc = "Open manpages picker" })
+  vim.keymap.set("n", "<leader><leader>q", open_quickfix_picker, { desc = "Open quick fix picker" })
 end)

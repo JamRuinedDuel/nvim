@@ -1,5 +1,5 @@
 local pack = require("jamruinedduel.utils.pack")
-local km = require("jamruinedduel.keymaps.registry")
+local km = require("jamruinedduel.utils.keymap")
 
 pack.add({
   pack.gh("christoomey/vim-tmux-navigator"),

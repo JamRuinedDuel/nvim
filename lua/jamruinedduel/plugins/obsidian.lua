@@ -1,5 +1,5 @@
 local pack = require("jamruinedduel.utils.pack")
-local km = require("jamruinedduel.keymaps.registry")
+local km = require("jamruinedduel.utils.keymap")
 
 pack.add({
   { src = pack.gh("obsidian-nvim/obsidian.nvim"), version = vim.version.range("*") },
@@ -22,7 +22,5 @@ obsidian.setup({
 })
 
 km.register("obsidian", function()
-  vim.keymap.set("n", "<leader>o", vim.cmd.Obsidian, {
-    desc = "Open obsidian.nvim",
-  })
+  vim.keymap.set("n", "<leader>o", vim.cmd.Obsidian, { desc = "Open obsidian.nvim" })
 end)

@@ -1,14 +1,17 @@
 ---@meta
----@module 'jamruinedduel.keymaps.registry'
+---@module 'jamruinedduel.utils.keymap'
 
+---@type table
 local M = {}
 
--- internal storage - not exposed directly
+--- internal storage
+---@type table
 local registry = {}
 
 --- Register a key-map provider.
----@param name string Unique identifier (usually the plugin name)
+---@param name string Unique identifier
 ---@param fn function Function that creates the keymap for that plugin
+---@return nil
 function M.register(name, fn)
   if type(name) ~= "string" or #name == 0 then
     error("Keymap registry: name must be a non-empty string")

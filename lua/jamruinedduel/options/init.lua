@@ -1,7 +1,3 @@
--- leader key
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
 local opt = vim.opt
 
 opt.tabstop = 2
@@ -30,6 +26,7 @@ opt.conceallevel = 1
 
 opt.clipboard:append("unnamedplus")
 
+opt.colorcolumn = "120"
 opt.splitright = true
 opt.splitbelow = true
 opt.equalalways = true

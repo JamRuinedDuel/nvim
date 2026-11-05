@@ -1,5 +1,5 @@
 local pack = require("jamruinedduel.utils.pack")
-local km = require("jamruinedduel.keymaps.registry")
+local km = require("jamruinedduel.utils.keymap")
 
 pack.add({
   pack.gh("neovim/nvim-lspconfig"),
@@ -76,13 +76,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 km.register("lsp", function()
-  vim.keymap.set("n", "<leader>lo", vim.cmd.Mason, {
-    desc = "Open Mason",
-  })
-  vim.keymap.set("n", "<leader>lu", vim.cmd.MasonUpdate, {
-    desc = "Update Mason libraries",
-  })
-  vim.keymap.set("n", "<leader>lc", vim.cmd.MasonToolsClean, {
-    desc = "Clean Mason Tool",
-  })
+  vim.keymap.set("n", "<leader>lo", vim.cmd.Mason, { desc = "Open Mason" })
+  vim.keymap.set("n", "<leader>lu", vim.cmd.MasonToolsUpdate, { desc = "Update Mason libraries" })
+  vim.keymap.set("n", "<leader>lc", vim.cmd.MasonToolsClean, { desc = "Clean Mason Tool" })
 end)

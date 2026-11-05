@@ -50,7 +50,9 @@ function M.update(name)
   if name ~= nil and type(name) ~= "string" then
     error("Pack.update: name must be a string or nil")
   end
-  return safe_call("vim.pack.update", vim.pack.update, name)
+  return safe_call("vim.pack.update", function()
+    vim.pack.update({}, { force = true })
+  end, name)
 end
 
 --- Update *all* plugins.

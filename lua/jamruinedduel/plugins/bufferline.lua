@@ -1,6 +1,6 @@
 local pack = require("jamruinedduel.utils.pack")
 local color = require("jamruinedduel.utils.color")
-local km = require("jamruinedduel.keymaps.registry")
+local km = require("jamruinedduel.utils.keymap")
 
 pack.add({
   pack.gh("willothy/nvim-cokeline"),
@@ -10,7 +10,7 @@ vim.opt.showtabline = 2
 
 local cokeline = require("cokeline")
 
----@type boolean,ColorPalette
+---@type boolean, ColorPalette
 local _, palette = color.get_palette()
 
 local set_tabline_highlights = function()

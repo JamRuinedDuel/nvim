@@ -1,5 +1,5 @@
 local pack = require("jamruinedduel.utils.pack")
-local km = require("jamruinedduel.keymaps.registry")
+local km = require("jamruinedduel.utils.keymap")
 
 pack.add({
   pack.gh("nvim-mini/mini.files"),
@@ -21,14 +21,13 @@ vim.api.nvim_create_autocmd("User", {
   end,
 })
 
+local toggle_mini_files = function()
+  if not files.close() then
+    files.open(vim.api.nvim_buf_get_name(0), false)
+    files.reveal_cwd()
+  end
+end
+
 km.register("files", function()
-  vim.keymap.set("n", "<leader>e", function()
-    if not files.close() then
-      files.open(vim.api.nvim_buf_get_name(0), false)
-      files.reveal_cwd()
-    end
-  end, {
-    desc = "Toggle MiniFiles",
-    silent = true,
-  })
+  vim.keymap.set("n", "<leader>e", toggle_mini_files, { silent = true, desc = "Toggle mini.files" })
 end)
