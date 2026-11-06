@@ -1,12 +1,8 @@
 ---@meta
 ---@module 'jamruinedduel.utils.pack'
-
---- utils/pack.lua
---- A thin abstraction over the underlying package manager (vim.pack)
-
 local M = {}
 
-local NOTIF_TITLE = "Pack"
+local NOTIF_TITLE = "Package Manager"
 
 --- Helper: safe call + user notification
 ---@return boolean, string|nil
@@ -51,14 +47,20 @@ function M.update(name)
     error("Pack.update: name must be a string or nil")
   end
   return safe_call("vim.pack.update", function()
-    vim.pack.update({}, { force = true })
+    vim.pack.update(nil, { force = true })
   end, name)
 end
 
 --- Update *all* plugins.
 ---@return boolean|nil, string|nil
 function M.update_all()
-  return M.update()
+  local ok, err = M.update()
+
+  if not ok then
+    vim.notify("Failed to update all plugins.\n" .. tostring(err), vim.log.levels.ERROR, { title = NOTIF_TITLE })
+    return
+  end
+  vim.notify("All plugins are up-to-date.", vim.log.levels.INFO, { title = NOTIF_TITLE })
 end
 
 --- Remove a plugin by name.

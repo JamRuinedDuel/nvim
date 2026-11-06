@@ -10,7 +10,9 @@ vim.opt.autocomplete = false
 
 local cmp = require("blink.cmp")
 
+---@diagnostic disable-next-line
 cmp.build():pwait()
+
 cmp.setup({
   enabled = function()
     return not vim.tbl_contains({ "minifiles", "help" }, vim.bo.filetype)
