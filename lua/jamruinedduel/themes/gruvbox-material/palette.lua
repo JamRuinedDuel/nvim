@@ -4,7 +4,7 @@
 local M = {
   none = "none",
   black = "#1b1b1b",
-  gray = "#45403d",
+  gray = "#5a524c",
   white = "#d4be98",
   red = "#ea6962",
   yellow = "#d8a657",

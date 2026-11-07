@@ -1,30 +1,8 @@
-local pack = require("jamruinedduel.utils.pack")
 local color = require("jamruinedduel.utils.color")
-local km = require("jamruinedduel.utils.keymap")
 
-pack.add({
-  pack.gh("willothy/nvim-cokeline"),
-})
-
-vim.opt.showtabline = 2
-
-local cokeline = require("cokeline")
-
----@type boolean, ColorPalette
 local _, palette = color.get_palette()
 
-local set_tabline_highlights = function()
-  vim.api.nvim_set_hl(0, "Tabline", { bg = palette.none })
-  vim.api.nvim_set_hl(0, "TablineFill", { bg = palette.none })
-end
-
-set_tabline_highlights()
-
-vim.api.nvim_create_autocmd("ColorScheme", {
-  callback = set_tabline_highlights,
-})
-
-cokeline.setup({
+return {
   show_if_buffers_are_at_least = 1,
   buffers = {
     focus_on_delete = "prev",
@@ -54,27 +32,18 @@ cokeline.setup({
     },
     {
       text = function(buf)
-        return " " .. buf.devicon.icon
+        return string.format(" %s%s%s ", buf.devicon.icon, buf.unique_prefix, buf.filename)
       end,
     },
     {
       text = function(buf)
-        return buf.unique_prefix
-      end,
-    },
-    {
-      text = function(buf)
-        return buf.filename .. " "
-      end,
-    },
-    {
-      text = function(buf)
-        return buf.is_modified and "[+] " or ""
-      end,
-    },
-    {
-      text = function(buf)
-        return buf.is_readonly and "[-] " or ""
+        local text = ""
+        if buf.is_readonly then
+          text = "[-] "
+        elseif buf.is_modified then
+          text = "[+] "
+        end
+        return text
       end,
     },
     {
@@ -139,12 +108,4 @@ cokeline.setup({
       bg = palette.none,
     },
   },
-})
-
-km.register("bufferline", function()
-  vim.keymap.set("n", "H", vim.cmd.bprevious, { desc = "Go to previous buffer" })
-  vim.keymap.set("n", "<leader>bh", vim.cmd.bprevious, { desc = "Go to previous buffer" })
-  vim.keymap.set("n", "L", vim.cmd.bnext, { desc = "Go to next buffer" })
-  vim.keymap.set("n", "<leader>bl", vim.cmd.bnext, { desc = "Go to next buffer" })
-  vim.keymap.set("n", "<leader>bd", vim.cmd.bdelete, { desc = "Close current buffer" })
-end)
+}

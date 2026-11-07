@@ -1,13 +1,5 @@
-local pack = require("jamruinedduel.utils.pack")
 local color = require("jamruinedduel.utils.color")
 
-pack.add({
-  pack.gh("nvim-lualine/lualine.nvim"),
-})
-
-local lualine = require("lualine")
-
----@type boolean, ColorPalette
 local _, palette = color.get_palette()
 local _, theme = color.get_lualine_theme()
 
@@ -22,12 +14,12 @@ vim.api.nvim_create_autocmd("ColorScheme", {
   callback = set_statusline_highlights,
 })
 
-lualine.setup({
+return {
   options = {
-    icons_enabled = true,
+    icons_enabled = vim.g.jamruinedduel_statusline_show_icon,
     theme = theme,
-    component_separators = { left = "", right = "" },
-    section_separators = { left = "", right = "" },
+    component_separators = { left = "", right = "" },
+    section_separators = { left = "", right = "" },
     disabled_filetypes = { statusline = {}, winbar = {} },
     ignore_focus = {},
     always_divide_middle = true,
@@ -38,7 +30,7 @@ lualine.setup({
     lualine_a = {
       {
         "mode",
-        icon = "󰚩",
+        icon = false,
         fmt = function(str)
           return str:lower()
         end,
@@ -46,32 +38,17 @@ lualine.setup({
     },
     lualine_b = {
       {
-        function()
-          return ""
-        end,
-        color = { bg = palette.none, fg = palette.white },
-        padding = 0,
-      },
-      {
         "branch",
         icon = "",
-        color = { bg = palette.magenta },
-        separator = { left = "", right = "" },
       },
     },
     lualine_c = {
       {
-        function()
-          return ""
-        end,
-        padding = 0,
-        separator = "",
-      },
-      {
         "filename",
         path = 4,
-        separator = "",
       },
+    },
+    lualine_x = {
       {
         "diagnostics",
         sources = {
@@ -79,41 +56,24 @@ lualine.setup({
         },
       },
     },
-    lualine_x = {
+    lualine_y = {
       {
         "filetype",
         colored = false,
         icon_only = false,
-        separator = "",
       },
       {
         "encoding",
-        separator = "",
       },
       {
         "fileformat",
-        separator = "",
-        symbols = {
-          unix = "unix",
-          doc = "doc",
-          mac = "mac",
-        },
-      },
-      {
-        function()
-          return ""
-        end,
-        color = { bg = palette.none, fg = palette.white },
-        padding = 0,
       },
     },
-    lualine_y = {
+    lualine_z = {
       {
         "location",
-        color = { bg = palette.magenta },
       },
     },
-    lualine_z = {},
   },
   inactive_sections = {
     lualine_a = {},
@@ -127,4 +87,4 @@ lualine.setup({
   winbar = {},
   inactive_winbar = {},
   extensions = {},
-})
+}

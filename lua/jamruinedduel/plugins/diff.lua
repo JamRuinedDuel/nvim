@@ -10,7 +10,7 @@ local diff = require("mini.diff")
 diff.setup()
 
 km.register("diff", function()
-  vim.keymap.set("n", "<leader>d", function()
+  vim.keymap.set("n", "<localleader>d", function()
     diff.toggle_overlay(0)
   end, {
     desc = "Toggle diff",

@@ -26,7 +26,6 @@ opt.conceallevel = 1
 
 opt.clipboard:append("unnamedplus")
 
-opt.colorcolumn = "120"
 opt.splitright = true
 opt.splitbelow = true
 opt.equalalways = true
@@ -34,6 +33,6 @@ opt.scrolloff = 5
 opt.sidescrolloff = 10
 
 opt.winborder = "single"
-opt.guicursor = "a:block-blinkwait500-blinkoff400-blinkon250,i:ver50-blinkwait500-blinkoff400-blinkon250"
+opt.guicursor = "a:block-blinkwait500-blinkoff100-blinkon200-Cursor,i:ver50-blinkwait500-blinkoff100-blinkon200-Cursor"
 
 opt.undofile = true

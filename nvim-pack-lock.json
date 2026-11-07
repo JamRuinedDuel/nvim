@@ -37,7 +37,7 @@
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
     "mason-lspconfig.nvim": {
-      "rev": "3a5cd6d562a01f6829a35ae761dc383264ea452b",
+      "rev": "55eceab8975036ac43a4176cbfe0d4bf1ddae93f",
       "src": "https://github.com/mason-org/mason-lspconfig.nvim"
     },
     "mason-tool-installer.nvim": {
@@ -65,15 +65,15 @@
       "src": "https://github.com/nvim-mini/mini.diff"
     },
     "mini.extra": {
-      "rev": "1bce4ba33fdabb3c003cbb2170b68a3b09222360",
+      "rev": "d1c9ba0a3327a2235f1ba880f70c7156240e30f9",
       "src": "https://github.com/nvim-mini/mini.extra"
     },
     "mini.files": {
-      "rev": "6ac1d7f5c9e6a196c75cf6f1ea8055cef4ac9bbf",
+      "rev": "3e53099b9af114fa79130a88c4804718b0fd82af",
       "src": "https://github.com/nvim-mini/mini.files"
     },
     "mini.hipatterns": {
-      "rev": "247c0173579a29af60f25f00671a75c57090be9c",
+      "rev": "b435ff459774b7ec234f1ae2834062f5829e75fa",
       "src": "https://github.com/nvim-mini/mini.hipatterns"
     },
     "mini.icons": {
@@ -105,7 +105,7 @@
       "src": "https://github.com/willothy/nvim-cokeline"
     },
     "nvim-lspconfig": {
-      "rev": "cc404d425c7752f56b8eaa269107be44d888ea51",
+      "rev": "993d048db0d83d8e8ba3f9cb376456321acdcce3",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-notify": {

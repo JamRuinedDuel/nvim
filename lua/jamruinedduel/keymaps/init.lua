@@ -13,6 +13,10 @@ km.register("global", function()
   vim.keymap.set("n", "<leader>wj", "<C-w>j", { desc = "Move to bottom split" })
   vim.keymap.set("n", "<leader>wk", "<C-w>k", { desc = "Move to top split" })
   vim.keymap.set("n", "<leader>wl", "<C-w>l", { desc = "Move to right split" })
+
+  vim.keymap.set("n", "<localleader>w", function()
+    vim.wo.wrap = not vim.wo.wrap
+  end, { silent = true, desc = "Toggle wrap" })
 end)
 
 for plugin_name, fn in pairs(km.all()) do
