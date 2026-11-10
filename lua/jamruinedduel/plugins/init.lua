@@ -25,8 +25,6 @@ require("jamruinedduel.plugins.vim-tmux-navigator")
 require("jamruinedduel.plugins.slideshow")
 require("jamruinedduel.plugins.keymap-viewer")
 
-require("jamruinedduel.plugins.obsidian")
-
 --- remove unused plugins
 pack.clean()
 

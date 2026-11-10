@@ -68,7 +68,7 @@ end
 ---@return boolean, string|nil
 function M.remove(name)
   assert(type(name) == "string", "Pack.remove: name must be a string")
-  return safe_call("vim.pack.del", vim.pack.del, name)
+  return safe_call("vim.pack.del", vim.pack.del, { name })
 end
 
 --- Delete all inactive plugins.

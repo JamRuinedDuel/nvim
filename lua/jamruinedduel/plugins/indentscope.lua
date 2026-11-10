@@ -9,7 +9,7 @@ local indentscope = require("mini.indentscope")
 indentscope.setup({
   draw = {
     delay = 100,
-    animation = indentscope.gen_animation.none(),
+    animation = indentscope.gen_animation.quadratic(),
   },
   symbol = "│",
 })

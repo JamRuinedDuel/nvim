@@ -9,7 +9,7 @@ vim.g.jamruinedduel_bufferline_show_icon = false
 ---@type "default"|"minimal"
 vim.g.jamruinedduel_statusline_style = "minimal"
 ---@type boolean
-vim.g.jamruinedduel_statusline_show_icon = false
+vim.g.jamruinedduel_statusline_show_icon = true
 
 require("jamruinedduel.types")
 require("jamruinedduel.options")

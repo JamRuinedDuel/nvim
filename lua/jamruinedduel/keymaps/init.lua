@@ -17,6 +17,14 @@ km.register("global", function()
   vim.keymap.set("n", "<localleader>w", function()
     vim.wo.wrap = not vim.wo.wrap
   end, { silent = true, desc = "Toggle wrap" })
+
+  vim.keymap.set("n", "<localleader>n", function()
+    vim.wo.number = not vim.wo.number
+  end, { silent = true, desc = "Toggle number" })
+
+  vim.keymap.set("n", "<localleader>r", function()
+    vim.wo.relativenumber = not vim.wo.relativenumber
+  end, { silent = true, desc = "Toggle relative number" })
 end)
 
 for plugin_name, fn in pairs(km.all()) do

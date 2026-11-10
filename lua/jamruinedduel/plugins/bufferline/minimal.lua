@@ -14,14 +14,16 @@ return {
   },
   default_hl = {
     fg = function(buf)
-      return buf.is_focused and palette.bright_black or palette.white
+      return buf.is_focused and palette.green or palette.white
     end,
-    bg = function(buf)
-      return buf.is_focused and palette.white or palette.none
-    end,
+    bg = palette.none,
   },
   components = {
-    { text = " " },
+    {
+      text = function(buf)
+        return buf.is_focused and " ● " or " ○ "
+      end,
+    },
     { --- filetype icon
       text = function(buf)
         return vim.g.jamruinedduel_bufferline_show_icon and buf.devicon.icon or ""
@@ -31,10 +33,16 @@ return {
       text = function(buf)
         return buf.unique_prefix
       end,
+      bold = function(buf)
+        return buf.is_focused
+      end,
     },
     { --- filename
       text = function(buf)
         return buf.filename
+      end,
+      bold = function(buf)
+        return buf.is_focused
       end,
     },
     { --- file modified flag "*"
